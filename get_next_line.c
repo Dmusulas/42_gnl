@@ -6,7 +6,7 @@
 /*   By: dmusulas <dmusulas@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:37:35 by dmusulas          #+#    #+#             */
-/*   Updated: 2023/11/30 18:36:51 by dmusulas         ###   ########.fr       */
+/*   Updated: 2023/11/30 20:47:59 by dmusulas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,21 @@ char	*readline(int fd, char *buff, char *remaining)
 {
 	int	bytes;
 
-	bytes = read(fd, buff, BUFFER_SIZE);
-	if (ft_strchr(buff, '\n'))
-		return (buff);
+	while (ft_strchr(remaining, '\n') && remaining)
+	{
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if (!(bytes > 0))
+			return (NULL);
+	}
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE];
-	char		*line;
-	char		*remaining;
+	static char		*line;
+	char			*remaining;
+	char			*buffer;
 
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	line = readline(fd, buffer, remaining);
 	return (line);
 }
