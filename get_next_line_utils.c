@@ -12,6 +12,18 @@
 
 #include "get_next_line.h"
 
+/**
+ * Copies memory from source to destination.
+ *
+ * This function copies `n` bytes from the memory area `src` to the memory area
+ * `dest`. The memory areas should not overlap, as this would lead to
+ * undefined behavior.
+ *
+ * @param dest The destination memory area.
+ * @param src The source memory area.
+ * @param n The number of bytes to copy.
+ * @return A pointer to the destination memory area.
+ */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char		*cdest;
@@ -26,11 +38,22 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
+/**
+ * Locates the first occurrence of a character in a string.
+ *
+ * This function searches for the first occurrence of the character `c` in
+ * the string `s`. The terminating null byte is considered part of the string.
+ *
+ * @param s The string to search.
+ * @param c The character to search for.
+ * @return A pointer to the first occurrence of the character in the string,
+ *         or `NULL` if the character is not found.
+ */
 char	*ft_strchr(const char *s, int c)
 {
 	char	char_c;
 
-	char_c = (char) c;
+	char_c = (char)c;
 	if (!s)
 		return (NULL);
 	while (*s)
@@ -44,6 +67,15 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
+/**
+ * Calculates the length of a string.
+ *
+ * This function returns the number of characters in the string `s`, excluding
+ * the terminating null byte.
+ *
+ * @param s The string to measure.
+ * @return The number of characters in the string.
+ */
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
@@ -59,6 +91,16 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
+/**
+ * Duplicates a string.
+ *
+ * This function allocates memory and copies the string `s` into it. The
+ * memory allocated for the new string should be freed by the caller.
+ *
+ * @param s The string to duplicate.
+ * @return A pointer to the newly allocated string, or `NULL` if the
+ *         allocation fails.
+ */
 char	*ft_strdup(const char *s)
 {
 	char	*new;
@@ -74,6 +116,18 @@ char	*ft_strdup(const char *s)
 	return (new);
 }
 
+/**
+ * Joins two strings into a new string.
+ *
+ * This function allocates memory and concatenates `s1` and `s2` into a new
+ * string. The memory allocated for the new string should be freed by the
+ * caller. If `s1` is not `NULL`, it will be freed.
+ *
+ * @param s1 The first string.
+ * @param s2 The second string.
+ * @return A pointer to the newly allocated string, or `NULL` if the
+ *         allocation fails.
+ */
 char	*ft_strjoin(char *s1, char const *s2)
 {
 	size_t	total_len;
